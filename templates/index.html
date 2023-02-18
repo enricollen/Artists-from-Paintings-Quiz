@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Image</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style type="text/css">
+        body { background: #d7effa !important; }
+    </style>
+</head>
+<body>
+    <div class="vh-100 d-flex align-items-center justify-content-center flex-column">
+        <h1>Artists Quiz</h1>
+        <img src="{{ image_url }}" width="400" height="400" class="rounded mx-auto d-block">
+        <form action="/guess" method="post" class="mt-4">
+            {% for label in labels %}
+            <button type="submit" name="guess" value="{{ label }}" class="btn btn-info mlr-3">{{ label }}</button>
+            {% endfor %}
+            <input type="hidden" name="correct_label" value="{{ image_url.split('/')[2] }}">
+        </form>
+    </div>
+</body>
+</html>
